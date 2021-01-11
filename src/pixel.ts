@@ -7,9 +7,9 @@ export default class Pixel {
     y: number;
     screen: HTMLCanvasElement;
     index: number;
-    active: boolean;
+    state: boolean;
     constructor(width: number, height: number, x: number, y: number, screen: HTMLCanvasElement, index:number) {
-      this.active = false;
+      this.state = false;
       this.index = index;
       this.screen = screen;
       this.x = x;
@@ -33,11 +33,11 @@ export default class Pixel {
     }
   
     draw() {
-        if(this.active){
+        if(this.state){
             return;
         }
         const padding = 5;
-        this.active = true;
+        this.state = true;
         this.ctx.beginPath();
         this.ctx.fillStyle = "purple";
         this.ctx.fillRect(padding, padding, this.width - padding*2, this.height - padding*2);
@@ -53,7 +53,7 @@ export default class Pixel {
     }
   
     clear() {
-        this.active = false;
+        this.state = false;
         this.ctx.clearRect(0,0, this.width, this.height);
         this.init();
         this.debug();

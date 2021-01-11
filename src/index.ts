@@ -1,3 +1,5 @@
+import Layer from "./layer";
+import Neuron from "./neuron";
 import Pixel from "./pixel";
 
 const pixels:Pixel[] = [];
@@ -49,28 +51,22 @@ function initScreenEvents() {
   screenCanvas.addEventListener("contextmenu",  ( e )=> { e.preventDefault(); return false; } );
 }
 
+function initRetinaLayer() {
+  pixels.forEach(pixel => {
+    let neuron = new Neuron();
+    neuron.referencePixel = pixel;
+    RETINA.neurons.push( neuron )
+  })
+}
+
+function compute() {
+  RETINA.compute();
+  console.log(RETINA);
+}
+
 const draw = initPixels();
 indicatePixels();
 initScreenEvents();
-
-
-/**
- * 25 pixels
- * 
- * class Pixel{}. It should 
- * 
- * class Neuron{
- *  state = ON | OFF
- * } 
- * 
- * class Layer{
- *  name = RETINA | V1 | V2 | V4 | IT
- *  neurons = [new Neuron()]
- * }
- * 
- * IT layer - 10 neurons each refering to number 0-9
- * 
- * 
- *  
- * 
- */
+const RETINA = new Layer("RETNA");
+initRetinaLayer();
+document.getElementById("go")?.addEventListener("click", compute);
