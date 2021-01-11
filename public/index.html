@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Web site created using create-snowpack-app" />
     <link rel="stylesheet" type="text/css" href="/index.css" />
     <title>Snowpack App</title>
-  </head>
-  <body>
-    <img id="img" src="/logo.svg" />
-    <canvas id="canvas"></canvas>
+</head>
+
+<body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div class="container">
+        <center>
+            <a href="https://www.youtube.com/watch?v=rA5qnZUXcqo&t=3s&ab_channel=Vsauce" target="_blank">The task.</a>
+        </center>
+    </div>
+    <div class="container">
+        <p>This is super simple simulation of how human brain proceses visual data. This ismualtion will have 25 pixels.</p>
+    </div>
+    <canvas width="500" height="500" id="eye"></canvas>
+
     <script type="module" src="/dist/index.js"></script>
     <!--
       This HTML file is a template.
@@ -23,5 +33,7 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  </body>
+
+</body>
+
 </html>
