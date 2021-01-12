@@ -4,17 +4,21 @@ import type Layer from "./layer";
 import Neuron from "./neuron";
 
 const referenceCount = 3;
+export let verticalNeuronsFirstIndex = 0;
+export let neuronsInLine = -1;
 
 export function initV1Layer(RETINA:Layer, V1:Layer) {
     
     _horizontal();
+    verticalNeuronsFirstIndex = V1.neurons.length;
     _vertical();
 
     function _horizontal() {
       for (let counter = 1; counter <= PIXEL_STEP; counter++) {
         let index = counter * PIXEL_STEP - PIXEL_STEP + referenceCount - 1;
-  
+        let total = 0;
         while (index % PIXEL_STEP !== 0) {
+          total++;
           let reference_index_1 = index - 2;
           let reference_index_2 = index - 1;
           let reference_index_3 = index;
@@ -27,9 +31,12 @@ export function initV1Layer(RETINA:Layer, V1:Layer) {
           V1.neurons.push(neuron);
           index++;
         }
+        if(neuronsInLine < 0){
+          neuronsInLine = total;
+        }
       }
     }
-  
+
     function _vertical() {
       for(let counter = 0; counter < PIXEL_STEP; counter++){
         let index = counter;

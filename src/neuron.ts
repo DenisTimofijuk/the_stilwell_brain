@@ -25,5 +25,4 @@ export default class Neuron {
             this.state = this.referencePixel?.state || false;
         }
     }
-
 }
