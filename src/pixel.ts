@@ -21,6 +21,7 @@ export default class Pixel {
       this.canvas.height = height;
       this.ctx = this.canvas.getContext('2d') as CanvasRenderingContext2D;
       this.init();
+      this.debug();
       this.display();
     }
   
@@ -42,7 +43,6 @@ export default class Pixel {
         this.ctx.fillStyle = "purple";
         this.ctx.fillRect(padding, padding, this.width - padding*2, this.height - padding*2);
         this.ctx.closePath();
-
         this.display();
     }
   
@@ -64,6 +64,5 @@ export default class Pixel {
         this.ctx.fillStyle = "black";
         this.ctx.textAlign = "center";
         this.ctx.fillText(this.index.toString(), this.width / 2, this.height / 2);
-        this.display();
     }
   }
