@@ -3,9 +3,9 @@ import { PIXEL_STEP } from "./index";
 import type Layer from "./layer";
 import Neuron from "./neuron";
 
-const referenceCount = 3;
+export const referenceCount = 3;
 export let verticalNeuronsFirstIndex = 0;
-export let neuronsInLine = -1;
+export let V1neuronsInLine = -1;
 
 export function initV1Layer(RETINA:Layer, V1:Layer) {
     
@@ -31,8 +31,8 @@ export function initV1Layer(RETINA:Layer, V1:Layer) {
           V1.neurons.push(neuron);
           index++;
         }
-        if(neuronsInLine < 0){
-          neuronsInLine = total;
+        if(V1neuronsInLine < 0){
+          V1neuronsInLine = total;
         }
       }
     }
