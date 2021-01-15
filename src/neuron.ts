@@ -4,7 +4,7 @@ export default class Neuron {
     state: boolean;
     references: Neuron[];
     referencePixel?: Pixel;
-    name: "angle-left-up" | "angle-left-down" | "angle-right-up" | "angle-right-down" | "";
+    name: "angle-left-up" | "angle-left-down" | "angle-right-up" | "angle-right-down" | "vertical" | "horizontal" | "pixel" | "full-line-h" | "full-line-v" | "";
     constructor(references: Neuron[] = []) {
         this.state = false;
         this.referencePixel;

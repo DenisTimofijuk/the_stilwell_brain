@@ -23,6 +23,7 @@ export function initV1Layer(RETINA:Layer, V1:Layer) {
           let reference_index_2 = index - 1;
           let reference_index_3 = index;
           let neuron = new Neuron();
+          neuron.name = "horizontal";
           neuron.references.push(
             RETINA.neurons[reference_index_1],
             RETINA.neurons[reference_index_2],
@@ -50,6 +51,7 @@ export function initV1Layer(RETINA:Layer, V1:Layer) {
           reference_index_2 = index + PIXEL_STEP;
           reference_index_3 = index + PIXEL_STEP * 2;
           let neuron = new Neuron();
+          neuron.name = "vertical";
           neuron.references.push(
             RETINA.neurons[reference_index_1],
             RETINA.neurons[reference_index_2],

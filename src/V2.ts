@@ -9,6 +9,8 @@ export function initV2Layer(V1: Layer, V2: Layer) {
     left_down();
     right_up();
     right_down();
+    full_horizontal_lines();
+    full_vertical_lines();
 
     function left_down() {
         let reference_index_1 = 0;
@@ -104,6 +106,48 @@ export function initV2Layer(V1: Layer, V2: Layer) {
             }else{
                 reference_index_2 += V1neuronsInLine;
             }
+        }
+    }
+
+    function full_horizontal_lines() {          
+        for(let row = 1; row <= PIXEL_STEP; row++){
+            let pixelsInLine = referenceCount;
+            let index = row * V1neuronsInLine - V1neuronsInLine;
+            let neuron = new Neuron();
+            neuron.name = "full-line-h";
+            neuron.references.push(V1.neurons[index]);
+            let counter = 1;
+            index++;
+            while(counter < V1neuronsInLine){
+                if(counter > pixelsInLine || counter === (V1neuronsInLine-1) ){
+                    pixelsInLine+=pixelsInLine;
+                    neuron.references.push(V1.neurons[index]);
+                }                
+                counter++;
+                index++;
+            }
+            V2.neurons.push(neuron);
+        }
+    }
+
+    function full_vertical_lines() {
+        for (let col = 1; col <= PIXEL_STEP; col++) {
+            let pixelsInLine = referenceCount;
+            let index = col * V1neuronsInLine - V1neuronsInLine + verticalNeuronsFirstIndex;
+            let neuron = new Neuron();
+            neuron.name = "full-line-v";
+            neuron.references.push(V1.neurons[index]);
+            let counter = 1;
+            index++;
+            while(counter < V1neuronsInLine){
+                if(counter > pixelsInLine || counter === (V1neuronsInLine-1) ){
+                    pixelsInLine+=pixelsInLine;
+                    neuron.references.push(V1.neurons[index]);
+                }                
+                counter++;
+                index++;
+            }
+            V2.neurons.push(neuron);
         }
     }
 
