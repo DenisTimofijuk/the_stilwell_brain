@@ -3,16 +3,29 @@ import type Layer from "./layer";
 import Neuron from "./neuron";
 import { referenceCount, V1neuronsInLine, verticalNeuronsFirstIndex } from "./V1";
 
+export let angleleftup_lastIndex = 0;
+export let angleleftdown_lastIndex = 0;
+export let anglerightup_lastIndex = 0;
+export let anglerightdown_lastIndex = 0;
+export let fulllineh_lastIndex = 0;
+export let fulllinev_lastIndex = 0;
+
 export function initV2Layer(V1: Layer, V2: Layer) {
-    let verticalNeuronIndex = verticalNeuronsFirstIndex;
     left_up();
+    angleleftup_lastIndex = V2.neurons.length-1;
     left_down();
+    angleleftdown_lastIndex = V2.neurons.length-1;
     right_up();
+    anglerightup_lastIndex = V2.neurons.length-1;
     right_down();
+    anglerightdown_lastIndex = V2.neurons.length-1;
     full_horizontal_lines();
+    fulllineh_lastIndex = V2.neurons.length-1;
     full_vertical_lines();
+    fulllinev_lastIndex = V2.neurons.length-1;
 
     function left_down() {
+        let verticalNeuronIndex = verticalNeuronsFirstIndex;
         let reference_index_1 = 0;
         let reference_index_2 = verticalNeuronIndex;
         let lastAvailableIndex = (PIXEL_STEP - 2) * V1neuronsInLine;

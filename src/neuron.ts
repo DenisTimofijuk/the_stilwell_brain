@@ -1,10 +1,13 @@
 import type Pixel from "./pixel";
 
+type V1neurons = "vertical" | "horizontal";
+type V2neurons = "angle-left-up" | "angle-left-down" | "angle-right-up" | "angle-right-down" | "full-line-h" | "full-line-v";
+type V4neurons = "possible-1" | "possible-2" | "possible-3" | "possible-4" | "possible-5" | "possible-6" | "possible-7" | "possible-8" | "possible-9" | "possible-0";
 export default class Neuron {
     state: boolean;
     references: Neuron[];
     referencePixel?: Pixel;
-    name: "angle-left-up" | "angle-left-down" | "angle-right-up" | "angle-right-down" | "vertical" | "horizontal" | "pixel" | "full-line-h" | "full-line-v" | "";
+    name: V1neurons | V2neurons | V4neurons | "pixel" | "";
     constructor(references: Neuron[] = []) {
         this.state = false;
         this.referencePixel;
