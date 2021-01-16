@@ -15,4 +15,10 @@ export default class Layer {
             neuron.checkStateByReferences();
         })
     }
+
+    debug(){
+        let combination:number[] = []
+        this.neurons.forEach( (neuron, index) => neuron.state && combination.push(index));
+        console.log(combination)
+    }
 }

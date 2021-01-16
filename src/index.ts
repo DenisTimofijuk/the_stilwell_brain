@@ -39,5 +39,7 @@ function compute() {
   console.log(RETINA);
   console.log(V1);
   console.log(V2);
-  console.log(V4);
+  console.log(V4);  
 }
+
+//check this one: sincew we are using names, we can easelly filter particualr neuron groups instead of playing with indexes
