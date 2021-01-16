@@ -10,9 +10,15 @@ export default class Layer {
         this.neurons = [];
     }
 
-    compute(){
+    computeAll(){
         this.neurons.forEach(neuron => {
-            neuron.checkStateByReferences();
+            neuron.checkStateByReferencesAll();
+        })
+    }
+
+    computeAny(){
+        this.neurons.forEach(neuron => {
+            neuron.checkStateByReferencesAny();
         })
     }
 
