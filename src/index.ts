@@ -33,18 +33,25 @@ function initScreenEvents() {
   screenCanvas.addEventListener("contextmenu", (e) => { e.preventDefault(); return false; });
 }
 
-function compute() {
-  RETINA.computeAll();
-  V1.computeAll();
-  V2.computeAll();
-  V4.computeAll();
-  IT.computeAny();
-
-  console.log(RETINA);
-  console.log(V1);
-  console.log(V2);
-  console.log(V4);
-  console.log(IT);
+function displayOutput() {
+  let outputNode = document.getElementById("output")!;
+  outputNode.innerText = "";
+  let IT_result = IT.neurons.filter(neuron => neuron.state);
+  IT_result.forEach(result => {
+    let p = document.createElement("p");
+    p.appendChild(document.createTextNode(result.name));
+    outputNode.appendChild(p);
+  })
 }
 
-//check this one: sincew we are using names, we can easelly filter particualr neuron groups instead of playing with indexes
+
+function compute() {
+  RETINA.checkIfAll();
+  V1.checkIfAll();
+  V2.checkIfAll();
+  V4.checkIfAll();
+  IT.checkIfANy();
+  IT.distinguish();
+
+  displayOutput();
+}

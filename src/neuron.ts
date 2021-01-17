@@ -8,8 +8,10 @@ export default class Neuron {
     references: Neuron[];
     referencePixel?: Pixel;
     name: V1neurons | V2neurons | V4neurons | "pixel" | "";
+    priority?:number;
     constructor(references: Neuron[] = []) {
         this.state = false;
+        this.priority;
         this.referencePixel;
         this.references = references;
         this.name = "";
@@ -17,13 +19,6 @@ export default class Neuron {
 
     checkStateByReferencesAll() {
         if (this.references.length > 0) {
-            // let state = true;
-            // for (let neuron of this.references) {
-            //     if (!neuron.state) {
-            //         state = false;
-            //     }
-            // }
-            // this.state = state;
             this.state = this.references.filter(neuron => neuron.state).length === this.references.length;
         }else{
             this.state = this.referencePixel?.state || false;

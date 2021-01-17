@@ -1,15 +1,60 @@
 import type Layer from "./layer";
 import Neuron, { V4neurons } from "./neuron";
 
-export function initITlayer(V4:Layer, IT:Layer) {
-    let names:V4neurons[] = ["possible-1", "possible-2", "possible-3", "possible-4", "possible-5", "possible-6", "possible-7", "possible-8", "possible-9", "possible-0"];
+type NeuronRule = { name: V4neurons, priority: number }
 
-    names.forEach(name => init(name));
+export function initITlayer(V4: Layer, IT: Layer) {
+    
+    let rules: Array<NeuronRule> = [
+        {
+            name: "possible-1",
+            priority: 1
+        },
+        {
+            name: "possible-2",
+            priority: 2
+        },
+        {
+            name: "possible-3",
+            priority: 3
+        },
+        {
+            name: "possible-4",
+            priority: 2
+        },
+        {
+            name: "possible-5",
+            priority: 5
+        },
+        {
+            name: "possible-6",
+            priority: 6
+        },
+        {
+            name: "possible-7",
+            priority: 2
+        },
+        {
+            name: "possible-8",
+            priority: 10
+        },
+        {
+            name: "possible-9",
+            priority: 8
+        },
+        {
+            name: "possible-0",
+            priority: 9
+        }
+    ];
 
-    function init(name:V4neurons) {
+    rules.forEach(rule => init(rule));
+
+    function init(rule: NeuronRule) {
         let neuron = new Neuron();
-        neuron.name = name;
-        neuron.references.push(...V4.neurons.filter(neuron => neuron.name === name));
+        neuron.name = rule.name;
+        neuron.references.push(...V4.neurons.filter(neuron => neuron.name === rule.name));
+        neuron.priority = rule.priority;
         IT.neurons.push(neuron);
     }
 }
