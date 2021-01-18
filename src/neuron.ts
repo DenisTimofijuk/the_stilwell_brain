@@ -8,7 +8,7 @@ export default class Neuron {
     references: Neuron[];
     referencePixel?: Pixel;
     name: V1neurons | V2neurons | V4neurons | "pixel" | "";
-    priority?:number;
+    priority?: number;
     constructor(references: Neuron[] = []) {
         this.state = false;
         this.priority;
@@ -20,12 +20,27 @@ export default class Neuron {
     checkStateByReferencesAll() {
         if (this.references.length > 0) {
             this.state = this.references.filter(neuron => neuron.state).length === this.references.length;
-        }else{
+        } else {
             this.state = this.referencePixel?.state || false;
         }
     }
 
-    checkStateByReferencesAny(){
+    checkStateByReferencesAny() {
         this.state = this.references.filter(neuron => neuron.state).length > 0;
     }
+
+    showIndication() {
+        findPixel(this.references);
+    }
+}
+
+function findPixel(neurons: Neuron[]) {
+    neurons.forEach(neuron => {
+        if (neuron.referencePixel) {
+            neuron.referencePixel.drawNeuronIndication();
+            return;
+        } else {
+            return findPixel(neuron.references);
+        }
+    })
 }

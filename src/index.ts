@@ -1,6 +1,7 @@
 import { initPixels } from "./EYE";
 import { initITlayer } from "./IT";
 import Layer from "./layer";
+import type Neuron from "./neuron";
 import type Pixel from "./pixel";
 import { initRetinaLayer } from "./RETINA";
 import { initV1Layer } from "./V1";
@@ -41,6 +42,18 @@ function displayOutput() {
     let p = document.createElement("p");
     p.appendChild(document.createTextNode(result.name));
     outputNode.appendChild(p);
+    createIcons(result.references.filter(neuron => neuron.state), outputNode);
+  })
+}
+
+function createIcons(neurons: Neuron[], parent: HTMLElement) {
+  neurons.forEach(neuron => {
+    neuron.references.forEach(refneuron => {
+      let icon = document.createElement("div");
+      //add events: hover over, hover out neuron.showIndication()
+      icon.classList.add("neuron-icon", refneuron.name);
+      parent.appendChild(icon);
+    })
   })
 }
 
@@ -54,4 +67,9 @@ function compute() {
   IT.distinguish();
 
   displayOutput();
+
+  // V4.debug();
 }
+
+//todo: draw active neurons from all layers except retina in canvas for indication.
+//make interactive buttons to show only indications related to that number if there are more than one possible number

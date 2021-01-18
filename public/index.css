@@ -44,3 +44,42 @@ div.container {
     display: flex;
     flex-direction: row;
 }
+
+.neuron-icon {
+    width: 90px;
+    height: 90px;
+    border: 1px solid rgb(175, 175, 175);
+    margin: 5px;
+    background-size: auto 90px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.neuron-icon:hover {
+    cursor: pointer;
+    border-color: purple;
+}
+
+.angle-left-up {
+    background-image: url(./img/lu.jpg);
+}
+
+.angle-left-down {
+    background-image: url(./img/ld.jpg);
+}
+
+.angle-right-up {
+    background-image: url(./img/ru.jpg);
+}
+
+.angle-right-down {
+    background-image: url(./img/rd.jpg);
+}
+
+.full-line-h {
+    background-image: url(./img/fh.jpg);
+}
+
+.full-line-v {
+    background-image: url(./img/fv.jpg);
+}
