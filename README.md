@@ -1,3 +1,7 @@
+# Mind Field S3 E3 - The Stilwell Brain
+I was inspired by [this experiment](https://www.youtube.com/watch?v=rA5qnZUXcqo&t=3s&ab_channel=Vsauce) and re-creaded it.
+It was really fun little project to build. I saw that I really suck at math, but I am happy with the end result.
+If you have any suggestions or comments please feel free to contact me or leave a comments below.
 # New Project
 
 > ✨ Bootstrapped with Create Snowpack App (CSA).
