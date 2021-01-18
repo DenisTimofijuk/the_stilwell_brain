@@ -34,11 +34,6 @@ export default class Layer {
         this.neurons.forEach( (neuron, index) => neuron.state && combination.push(index));
         console.log(combination)
     }
-
-    // showIndications(){
-    //     let activeNeurons = this.neurons.filter(neuron => neuron.state);
-    //     activeNeurons.forEach(neuron => neuron.showIndication());
-    // }
 }
 
 function findHighestValue(neurons:Neuron[]) {

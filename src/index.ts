@@ -35,24 +35,29 @@ function initScreenEvents() {
 }
 
 function displayOutput() {
-  let outputNode = document.getElementById("output")!;
-  outputNode.innerText = "";
+  let outputNode_it = document.getElementById("output-it")!;
+  let outputNode_v2 = document.getElementById("output-v2")!;
+  outputNode_it.innerText = "";
+  outputNode_v2.innerText = "";
   let IT_result = IT.neurons.filter(neuron => neuron.state);
   IT_result.forEach(result => {
-    let p = document.createElement("p");
-    p.appendChild(document.createTextNode(result.name));
-    outputNode.appendChild(p);
-    createIcons(result.references.filter(neuron => neuron.state), outputNode);
+    let span = document.createElement("span");
+    span.appendChild(document.createTextNode(result.name));
+    outputNode_it.appendChild(span);
+    createIcons(result.references.filter(neuron => neuron.state), outputNode_v2);
   })
 }
 
 function createIcons(neurons: Neuron[], parent: HTMLElement) {
+  let wrapper = document.createElement('div');
+  parent.appendChild(wrapper);
   neurons.forEach(neuron => {
     neuron.references.forEach(refneuron => {
       let icon = document.createElement("div");
-      //add events: hover over, hover out neuron.showIndication()
       icon.classList.add("neuron-icon", refneuron.name);
-      parent.appendChild(icon);
+      wrapper.appendChild(icon);
+      icon.addEventListener('mouseover', () => refneuron.showIndication() );
+      icon.addEventListener('mouseout', () => refneuron.clearIndication() )
     })
   })
 }
@@ -67,9 +72,4 @@ function compute() {
   IT.distinguish();
 
   displayOutput();
-
-  // V4.debug();
 }
-
-//todo: draw active neurons from all layers except retina in canvas for indication.
-//make interactive buttons to show only indications related to that number if there are more than one possible number

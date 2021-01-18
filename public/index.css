@@ -83,3 +83,19 @@ div.container {
 .full-line-v {
     background-image: url(./img/fv.jpg);
 }
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+#output-it span {
+    margin: 10px;
+    margin-right: 35px;
+    padding-top: 10px;
+}

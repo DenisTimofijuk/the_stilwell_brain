@@ -30,17 +30,34 @@ export default class Neuron {
     }
 
     showIndication() {
-        findPixel(this.references);
+        _findPixel(this.references);
+
+        function _findPixel(neurons: Neuron[]) {
+            neurons.forEach(neuron => {
+                if (neuron.referencePixel) {
+                    neuron.referencePixel.drawNeuronIndication();
+                    return;
+                } else {
+                    return _findPixel(neuron.references);
+                }
+            })
+        }
+    }
+
+    clearIndication(){
+        _findPixel(this.references);
+
+        function _findPixel(neurons: Neuron[]) {
+            neurons.forEach(neuron => {
+                if (neuron.referencePixel) {
+                    neuron.referencePixel.clear();
+                    neuron.referencePixel.draw();
+                    return;
+                } else {
+                    return _findPixel(neuron.references);
+                }
+            })
+        }
     }
 }
 
-function findPixel(neurons: Neuron[]) {
-    neurons.forEach(neuron => {
-        if (neuron.referencePixel) {
-            neuron.referencePixel.drawNeuronIndication();
-            return;
-        } else {
-            return findPixel(neuron.references);
-        }
-    })
-}
