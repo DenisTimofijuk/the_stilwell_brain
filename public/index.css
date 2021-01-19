@@ -99,3 +99,16 @@ div.container {
     margin-right: 35px;
     padding-top: 10px;
 }
+
+.state-true {
+    color: purple;
+    font-weight: bold;
+}
+
+#logs {
+    padding-left: 2vh;
+}
+
+#logs ol {
+    border-bottom: 1px solid rgb(180, 180, 180);
+}

@@ -21,6 +21,9 @@
         <p>This is super simple simulation of how human brain proceses visual data. It is designed to work only with digits.</p>
         <p>Drag a mouse with pressed left button to be able to draw. Drag a mouse with right button pressed to be able to delete. Main rule - digit should take space 3 x 5.</p>
     </div>
+    <div class="container">
+        <input type="button" id="go" class="go-button" value="Compute">
+    </div>
     <div class="container screen">
         <div>
             <canvas width="500" height="500" id="eye"></canvas>
@@ -36,9 +39,7 @@
                 <div id="output-v2" class="flex-row"></div>
             </div>
         </div>
-    </div>
-    <div class="container">
-        <input type="button" id="go" class="go-button" value="Compute">
+        <div id="logs" class="flex-col"></div>
     </div>
 
     <script type="module" src="./dist/index.js"></script>

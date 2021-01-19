@@ -62,6 +62,28 @@ function createIcons(neurons: Neuron[], parent: HTMLElement) {
   })
 }
 
+function showLogs() {
+  let logNode = document.getElementById("logs")!;
+  logNode.innerText = "";
+
+  [RETINA, V1, V2, V4, IT].forEach(layer => {
+    let name = document.createTextNode( layer.name );
+    let ol = document.createElement("ol");
+    logNode?.appendChild(name);
+    logNode?.appendChild(ol);
+    layer.neurons.forEach(neuron => {
+      let state = document.createTextNode( "State: " + JSON.stringify(neuron.state) );
+      let name = document.createTextNode( "; Name: " + neuron.name );
+      let li = document.createElement('li');
+      ol.appendChild(li);
+      li.appendChild(state);
+      li.appendChild(name);
+      li.className = neuron.state ? "state-true" : "state-false";
+    })
+  })
+
+}
+
 
 function compute() {
   RETINA.checkIfAll();
@@ -72,4 +94,6 @@ function compute() {
   IT.distinguish();
 
   displayOutput();
+  showLogs();
+  // console.log(RETINA.neurons, V1.neurons, V2.neurons, V4.neurons, IT.neurons)
 }
