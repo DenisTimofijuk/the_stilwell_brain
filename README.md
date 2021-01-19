@@ -3,12 +3,17 @@ I was inspired by [this experiment](https://www.youtube.com/watch?v=rA5qnZUXcqo&
 It was really fun little project to build. I saw that I really suck at math, but I am happy with the end result.
 If you have any suggestions or comments please feel free to contact me or leave a comments below.
 
+[Demo link](http://stilwellbrain.000webhostapp.com/)
+
 
 PRODUCTION
 
 `buildOptions.minify` has moved to package "@snowpack/plugin-optimize". Install it and include as a plugin in your Snowpack config file.
+
 [@snowpack/plugin-optimize](https://www.npmjs.com/package/@snowpack/plugin-optimize) had an error
+
 [snowpack-plugin-webpack5](https://www.npmjs.com/package/snowpack-plugin-webpack5) - worked with default settings.
+
 
 > ✨ Bootstrapped with Create Snowpack App (CSA).
 
