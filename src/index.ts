@@ -69,6 +69,7 @@ function showLogs() {
   [RETINA, V1, V2, V4, IT].forEach(layer => {
     let name = document.createTextNode( layer.name );
     let ol = document.createElement("ol");
+    ol.start = 0;
     logNode?.appendChild(name);
     logNode?.appendChild(ol);
     layer.neurons.forEach(neuron => {
